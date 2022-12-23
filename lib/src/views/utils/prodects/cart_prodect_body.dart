@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../ui/single_prodect_page/prodect.dart';
 
 class CartProdectBody extends StatefulWidget {
   const CartProdectBody({Key? key}) : super(key: key);
@@ -11,7 +13,15 @@ class CartProdectBody extends StatefulWidget {
 class _CartProdectBodyState extends State<CartProdectBody> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return
+      GestureDetector(
+        onTap: () {
+      setState(() {
+        //api!.makeAsClicked();
+        Get.to(ProdectPage());
+      });
+    },
+    child:Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
         width: double.maxFinite,
@@ -21,6 +31,6 @@ class _CartProdectBodyState extends State<CartProdectBody> {
             borderRadius: BorderRadius.circular(10)
         ),
       ),
-    );
+    ));
   }
 }

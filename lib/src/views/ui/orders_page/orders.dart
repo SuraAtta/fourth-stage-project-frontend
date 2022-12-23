@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_stage/src/views/utils/orders/orders_bar.dart';
 
+import '../../utils/nav/back_arrow.dart';
 import '../../utils/style/colors.dart';
 import '../../utils/style/text_style.dart';
 
@@ -22,25 +23,7 @@ class _OrdersPageState extends State<OrdersPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                      onPressed: () {
-                        print("object");
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        color: Color.fromRGBO(178, 35, 35, 1),
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              BackArrow(),
               Align(
                 alignment: Alignment.center,
                 child: Padding(

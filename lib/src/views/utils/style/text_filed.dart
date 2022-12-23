@@ -62,11 +62,8 @@ class Text_Field1 extends StatelessWidget {
                 prefixIcon: icon,
                 hintText: " $hintText   ",
                 hintStyle:GoogleFonts.cairo(
-                    textStyle: TextStyle(
-                        fontSize: 16,
-                        color: Colorsapp.dGray,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 1)),
+                    textStyle:
+                    Text_Style.getstyle(fontsize: 16, ColorText: Colorsapp.dGray, fontWeight:FontWeight.w500)),
                 contentPadding: const EdgeInsets.only(top: 10, right: 12)),
             onTap: () {}),
       ),

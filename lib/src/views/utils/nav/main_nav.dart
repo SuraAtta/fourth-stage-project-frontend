@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:fourth_stage/src/views/ui/home_page/home.dart';
+import 'package:get/get.dart';
 import '../../ui/cart_page/cart.dart';
 import '../../ui/favorite_page/favorite.dart';
 import '../../ui/home_page/nav_slider.dart';
@@ -39,6 +40,10 @@ Color selectedColor = Colors.white;
 Color unselectedColor = Colorsapp.lGray;
 Color? containerColor = Colorsapp.themeColor;
 Color containerColors = Colorsapp.themeColor;
+final TextEditingController searchController =
+TextEditingController(text: "");
+final RxBool isEmpty1 = true.obs;
+final RxString text = searchController.text.obs;
 
 class _MainNavState extends State<MainNav> {
   int selectedIndex;
@@ -47,7 +52,18 @@ class _MainNavState extends State<MainNav> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     FavoritePage(),
-    SearchPage(),
+    SearchPage( searchController: searchController,
+  onPressed: () {
+  Get.to(HomePage());
+  },
+  onChanged: (String text1) {
+    text.value = text1;
+    if (text.value == "") {
+      isEmpty1.value = true;
+    } else {
+      isEmpty1.value = false;
+    }
+  }),
     CartPage(),
     ProfilePage(),
   ];
@@ -56,6 +72,10 @@ class _MainNavState extends State<MainNav> {
 
   @override
   Widget build(BuildContext context) {
+  final TextEditingController searchController =
+  TextEditingController(text: "");
+  final RxBool isEmpty1 = true.obs;
+  final RxString text = searchController.text.obs;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colorsapp.bgColor,

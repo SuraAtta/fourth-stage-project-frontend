@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
-
 import '../../utils/Catigorys/catigorys_bar.dart';
 import '../../utils/prodects/home_prodects_bar.dart';
 import '../../utils/style/colors.dart';
