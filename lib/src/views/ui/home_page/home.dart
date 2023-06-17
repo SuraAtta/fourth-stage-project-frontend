@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import '../../utils/Catigorys/catigorys_bar.dart';
-import '../../utils/prodects/home_prodects_bar.dart';
+import '../../utils/lists/Home_Catigories_list.dart';
+import '../../utils/lists/home_catigories_bar.dart';
+import '../../utils/lists/home_prodects_bar.dart';
 import '../../utils/style/colors.dart';
 import '../../utils/style/text_style.dart';
 import 'nav_slider.dart';
@@ -16,81 +18,61 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    print('مناا');
+    // TODO: implement initState
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colorsapp.bgColor, animate: true);
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).backgroundColor, animate: true);
     return Scaffold(
-      backgroundColor: Colorsapp.bgColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
-        child: Expanded(
-          child: ListView(
-            children: [
-              Column(
-               children: [
-                     Padding(
-                       padding: const EdgeInsets.all(8.0),
-                       child: Container(
-                           height:100,
-                           width: double.maxFinite,
-                              child: CatigoryButtonsBar(),
-                 ),
-                     ),
-                 Align(
-                   alignment: Alignment.centerRight,
-                   child: Padding(
-                     padding: const EdgeInsets.only(right: 20),
-                     child: Text('الرائج',style: Text_Style.getstyle(
-                         fontsize: 18,
-                         ColorText: Colors.black,
-                         fontWeight: FontWeight.w700)),
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return  Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8,left: 8),
                    child: Container(
-                     height: 223,
-                     width: double.maxFinite,
-                     child: HomeProdectsBar(),
-                   ),
-                 ),
-                 Align(
-                   alignment: Alignment.centerRight,
-                   child: Padding(
-                     padding: const EdgeInsets.only(right: 20),
-                     child: Text('ألصنف',style: Text_Style.getstyle(
-                         fontsize: 18,
-                         ColorText: Colors.black,
-                         fontWeight: FontWeight.w700)),
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(
-                     height: 223,
-                     width: double.maxFinite,
-                     child: HomeProdectsBar(),
-                   ),
-                 ),
-                 Align(
-                   alignment: Alignment.centerRight,
-                   child: Padding(
-                     padding: const EdgeInsets.only(right: 20),
-                     child: Text('ألصنف',style: Text_Style.getstyle(
-                         fontsize: 18,
-                         ColorText: Colors.black,
-                         fontWeight: FontWeight.w700)),
-                   ),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Container(
-                     height: 223,
-                     width: double.maxFinite,
-                     child: HomeProdectsBar(),
-                   ),
-                 ),
-               ],
-            ),
-          ]),
+                    height:90,
+                    width: double.maxFinite,
+                    child: CatigoryButtonsBar(),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Text('المنجات',style: Text_Style.getstyle(
+                        fontsize: 18,
+                        ColorText: Theme.of(context).accentColor,
+                        fontWeight: FontWeight.w700)),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Container(
+                //     color: Colors.teal,
+                //     height: 250,
+                //     width: double.maxFinite,
+                //     child: HomeProdectsBar(),
+                //   ),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8,right: 8),
+                  child: Container(
+                    height: 545,
+                    width: double.maxFinite,
+                    child:
+                    HomeCatigoryProdectlist(),
+                  ),
+                ),
+
+              ],
+            );
+          },
         ),
       ),
     );

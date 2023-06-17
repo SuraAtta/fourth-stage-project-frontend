@@ -14,7 +14,7 @@ class _BackArrowState extends State<BackArrow> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 8,right: 8),
           child: IconButton(
             onPressed: () {
               print("object");
@@ -22,7 +22,7 @@ class _BackArrowState extends State<BackArrow> {
             },
             icon: const Icon(
               Icons.arrow_back_ios_new_sharp,
-              color: Color.fromRGBO(178, 35, 35, 1),
+              color: Colors.grey,
               size: 24,
             ),
           ),

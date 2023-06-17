@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:fourth_stage/src/views/ui/home_page/home.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import '../../../logic/DarkMode/model.dart';
 import '../../ui/cart_page/cart.dart';
 import '../../ui/favorite_page/favorite.dart';
 import '../../ui/home_page/nav_slider.dart';
@@ -19,15 +21,15 @@ class MainNav extends StatefulWidget {
 }
 
 final BorderRadius _borderRadius = const BorderRadius.only(
-  topLeft: Radius.circular(30),
-  topRight: Radius.circular(30),
+  topLeft: Radius.circular(18),
+  topRight: Radius.circular(18),
 );
 ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
   borderRadius: BorderRadius.only(
     bottomRight: Radius.circular(0),
     bottomLeft: Radius.circular(0),
-    topRight: Radius.circular(30),
-    topLeft: Radius.circular(30),
+    topRight: Radius.circular(18),
+    topLeft: Radius.circular(18),
   ),
 );
 SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.pinned;
@@ -52,18 +54,7 @@ class _MainNavState extends State<MainNav> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     FavoritePage(),
-    SearchPage( searchController: searchController,
-  onPressed: () {
-  Get.to(HomePage());
-  },
-  onChanged: (String text1) {
-    text.value = text1;
-    if (text.value == "") {
-      isEmpty1.value = true;
-    } else {
-      isEmpty1.value = false;
-    }
-  }),
+    SearchPage(),
     CartPage(),
     ProfilePage(),
   ];
@@ -72,27 +63,57 @@ class _MainNavState extends State<MainNav> {
 
   @override
   Widget build(BuildContext context) {
-  final TextEditingController searchController =
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
+    final TextEditingController searchController =
   TextEditingController(text: "");
   final RxBool isEmpty1 = true.obs;
   final RxString text = searchController.text.obs;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colorsapp.bgColor,
+        backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0,
         actions: [
           Builder(
-            builder: (context) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colorsapp.dGray,
-                  size: 30,
+            builder: (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 15,bottom: 8,right: 290),
+                  child: Container(
+                    height: 27,
+                    width: 40,
+                    child: OutlinedButton(
+                        child:
+                        Icon( themeChange.darkTheme ? Icons.sunny : Icons.mode_night,
+                          color: Colorsapp.themeColor,size: 18,) ,
+                        style: OutlinedButton.styleFrom(
+                            padding: EdgeInsets.only(right: 1),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10))
+                            )
+                        ),
+                      onPressed: () {
+                        setState(() {
+                          themeChange.darkTheme = !themeChange.darkTheme;
+                        });
+                      },
+                    ),
+                  ),
                 ),
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: Theme.of(context).accentColor,
+                      size: 30,
+                    ),
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
@@ -100,7 +121,7 @@ class _MainNavState extends State<MainNav> {
       endDrawer: Navbar(),
       body: SafeArea(child: _widgetOptions[selectedIndex]),
       bottomNavigationBar: SnakeNavigationBar.color(
-        height: 60,
+        height: 45,
         behaviour: SnakeBarBehaviour.floating,
         snakeShape: SnakeShape.indicator,
         snakeViewColor: Colorsapp.themeColor,
@@ -138,14 +159,14 @@ class _MainNavState extends State<MainNav> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-              size: 26,
+              size: 24,
             ),
             label: 'home',
           ),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.favorite,
-                size: 26,
+                size: 24,
               ),
               label: 'favorite'),
           BottomNavigationBarItem(
@@ -155,11 +176,11 @@ class _MainNavState extends State<MainNav> {
               ),
               label: 'search'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_outlined), label: 'prodects'),
+              icon: Icon(Icons.shopping_cart_outlined,size: 24,), label: 'prodects'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.person,
-                size: 26,
+                size: 24,
               ),
               label: 'profile'),
         ],

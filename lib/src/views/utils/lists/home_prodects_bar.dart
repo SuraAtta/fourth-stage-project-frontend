@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
-import 'prodect_body.dart';
+import '../../../logic/services/api/api_calls.dart';
+import 'Home_Catigories_list.dart';
+import '../prodects/prodect_body.dart';
 
 class HomeProdectsBar extends StatefulWidget {
   const HomeProdectsBar({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class HomeProdectsBar extends StatefulWidget {
 }
 
 class _HomeProdectsBarState extends State<HomeProdectsBar> {
+
   @override
   Widget build(BuildContext context) {
     return Flex(
@@ -19,9 +22,12 @@ class _HomeProdectsBarState extends State<HomeProdectsBar> {
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               reverse: true,
-              itemCount: 20,
+              itemCount: BackEnd.Prodects3.length,
               itemBuilder: (BuildContext context, index) {
-                return CartBody();
+                return
+                    CartBody( index:index);
+                 //   HomeCatigoryProdectlist()
+
               })
     )
     ]);

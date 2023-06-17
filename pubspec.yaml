@@ -70,6 +70,10 @@ dependencies:
   appcheck: ^1.0.6
   flutter_custom_clippers: ^2.0.0
   animate_do: ^3.0.2
+  sqflite: ^2.2.6
+  flutter_launch: ^0.3.0
+  provider: ^6.0.5
+
 
 dev_dependencies:
   flutter_test:
@@ -93,8 +97,14 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/img.png
+    - images/R2.png
+    - images/messages.png
+    - images/photo_2023-05-20_04-59-33.jpg
+    - images/img_1.png
+    - images/Successful purchase-cuate.png
+    - images/Receipt-cuate.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

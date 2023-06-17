@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_stage/src/logic/services/api/api_calls.dart';
 
 import 'catigories_body.dart';
 
@@ -18,12 +19,9 @@ class _CatigoriesPageBarState extends State<CatigoriesPageBar> {
             crossAxisCount: 3,
             childAspectRatio:MediaQuery.of(context).size.width / 500,
           ),
-          itemCount: 7,
+          itemCount: BackEnd.apiCategory.length,
           itemBuilder: (BuildContext context, index) {
-            //if(BackEnd.favList[index].isFav == true){
-            return CatigoryBody();
-            //}
-            //return SizedBox(height: 0,width: 0,);
+            return CatigoryBody(index:index, text:BackEnd.apiCategory[index].name.toString(), onPressed: () {  } ,);
           }
       ),
     );

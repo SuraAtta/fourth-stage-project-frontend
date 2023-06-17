@@ -2,7 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:fourth_stage/src/views/ui/search_page/search.dart';
 import 'package:get/get.dart';
-
+import '../../../logic/services/api/api_calls.dart';
 import '../../utils/nav/back_arrow.dart';
 import '../../utils/style/button1.dart';
 import '../../utils/style/colors.dart';
@@ -25,31 +25,24 @@ class _SearchFiltersState extends State<SearchFilters> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colorsapp.bgColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               BackArrow(),
               Padding(
-                padding: const EdgeInsets.only(top: 20, right: 25, left: 25),
+                padding: const EdgeInsets.only(top: 0, right: 15, left: 25),
                 child: Column(
                   children: [
                     Align(
-                      alignment: Alignment.topRight,
-                      child: Text(
-                        "فلاتر البحث",
-                        style:  Text_Style.getstyle(fontsize: 26, ColorText: Colors.black, fontWeight:FontWeight.w700),
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5,bottom: 15),
-                      child: Align(
-                        alignment: Alignment.topRight,
+                      alignment: Alignment.topCenter,
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
                         child: Text(
-                          "السعر",
-                          style: Text_Style.getstyle(fontsize: 21, ColorText: Colors.black, fontWeight:FontWeight.w700),
+                          "فلاتر البحث",
+                          style:  Text_Style.getstyle(fontsize: 26, ColorText: Theme.of(context).accentColor, fontWeight:FontWeight.w700),
                           textDirection: TextDirection.rtl,
                         ),
                       ),
@@ -94,8 +87,8 @@ class _SearchFiltersState extends State<SearchFilters> {
                       );
                     }),
                     Container(
-                      width: 340,
-                      height: 50,
+                      width: 280,
+                      height: 45,
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton2(
                           isExpanded: true,
@@ -119,25 +112,22 @@ class _SearchFiltersState extends State<SearchFilters> {
                               ),
                             ],
                           ),
-                          items: [
-
-                          ],
-                          // items: BackEnd.apiCategory
-                          //     .map((item) => DropdownMenuItem<String>(
-                          //   alignment: Alignment.centerRight,
-                          //   value: item.title,
-                          //   child: Text(
-                          //     textDirection: TextDirection.rtl,
-                          //     ("  ${item.title}    "),
-                          //     style: const TextStyle(
-                          //       fontSize: 18,
-                          //       fontWeight: FontWeight.bold,
-                          //       color: Colors.white,
-                          //     ),
-                          //     overflow: TextOverflow.ellipsis,
-                          //   ),
-                          // ))
-                          //     .toList(),
+                          items: BackEnd.apiCategory
+                              .map((item) => DropdownMenuItem<String>(
+                            alignment: Alignment.centerRight,
+                            value: item.name,
+                            child: Text(
+                              textDirection: TextDirection.rtl,
+                              ("  ${item.name}    "),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromRGBO(117, 117, 118, 1),
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ))
+                              .toList(),
                           value: selectedValue,
                           onChanged: (value) {
                             setState(() {
@@ -156,9 +146,10 @@ class _SearchFiltersState extends State<SearchFilters> {
                           buttonPadding:
                           const EdgeInsets.only(left: 14, right: 20),
                           buttonDecoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(15),
                             border: Border.all(
-                              color: Colors.white,
+                              color: Colorsapp.dGray,
+                              width: 1.5
                             ),
                             color:  Colorsapp.lGray,
                           ),
@@ -167,11 +158,11 @@ class _SearchFiltersState extends State<SearchFilters> {
                           itemPadding:
                           const EdgeInsets.only(left: 14, right: 14),
                           dropdownMaxHeight: 200,
-                          dropdownWidth: 340,
+                          dropdownWidth: 280,
                           dropdownPadding: null,
                           dropdownDecoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(14),
-                            color: Colorsapp.themeColor,
+                            color: Theme.of(context).cardColor,
                           ),
                           dropdownElevation: 8,
                           scrollbarRadius: const Radius.circular(40),

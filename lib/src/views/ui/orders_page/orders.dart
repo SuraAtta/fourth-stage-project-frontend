@@ -16,7 +16,7 @@ class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colorsapp.bgColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
 
         child: Column(
@@ -30,7 +30,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   padding: const EdgeInsets.only(right: 20),
                   child: Text('ألطلبات',style: Text_Style.getstyle(
                       fontsize: 20,
-                      ColorText: Colorsapp.dGray,
+                      ColorText:  Theme.of(context).accentColor,
                       fontWeight: FontWeight.w700)),
                 ),
               ),

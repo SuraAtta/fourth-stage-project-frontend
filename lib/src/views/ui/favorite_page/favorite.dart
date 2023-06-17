@@ -2,7 +2,7 @@ import 'package:app_popup_menu/app_popup_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
-import '../../utils/prodects/fav_prodects_bar.dart';
+import '../../utils/lists/fav_prodects_bar.dart';
 import '../../utils/style/colors.dart';
 import '../../utils/style/text_style.dart';
 
@@ -16,31 +16,32 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colorsapp.bgColor, animate: true);
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).backgroundColor, animate: true);
     return Scaffold(
-      backgroundColor: Colorsapp.bgColor, 
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Text('المفضلات',style: Text_Style.getstyle(
-                    fontsize: 20,
-                    ColorText: Colorsapp.dGray,
-                    fontWeight: FontWeight.w700)),
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text('المفضلات',
+                      style: Text_Style.getstyle(
+                          fontsize: 20,
+                          ColorText:Theme.of(context).accentColor,
+                          fontWeight: FontWeight.w700)),
+                ),
               ),
-            ),
-            Expanded(child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: FavProdectsBar(),
-            )),
-        ]
-        ),
-        ),
+              Expanded(
+                  child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: FavProdectsBar(),
+              )),
+            ]),
+      ),
     );
   }
 }

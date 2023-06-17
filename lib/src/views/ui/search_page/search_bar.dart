@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:unicons/unicons.dart';
-
 import '../../utils/style/colors.dart';
 import '../../utils/style/text_style.dart';
-import '../home_page/home.dart';
 import 'filters.dart';
 
 class SearchBar extends StatefulWidget {
@@ -32,22 +30,22 @@ class _SearchBarState extends State<SearchBar> {
           child: Container(
             margin: EdgeInsets.only(left: 5),
             width: 60,
-            height: 60,
+            height: 45,
             decoration: BoxDecoration(
               border: Border.all(color: Colorsapp.lGray,width: 1),
-                color: Colors.white,
+                color: Colorsapp.lGray,
                 borderRadius: BorderRadius.circular(16)),
             child: IconButton(
               onPressed: () {
                 onPressed();
               },
-              icon: Icon(UniconsLine.filter),
+              icon: Icon(UniconsLine.filter,size: 22,color: Color.fromRGBO(117, 117, 118, 1),),
             ),
           ),
         ),
         Expanded(
           child: Container(
-            height: 60,
+            height: 45,
             child: TextField(
               autofocus: false,
               onChanged: (text) {
@@ -58,7 +56,7 @@ class _SearchBarState extends State<SearchBar> {
               style: Text_Style.getstyle(fontsize: 14, ColorText: Colors.black, fontWeight: FontWeight.w400),
               decoration: InputDecoration(
                   hintTextDirection: TextDirection.rtl,
-                  fillColor: Colors.white,
+                  fillColor: Colorsapp.lGray,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
@@ -68,19 +66,19 @@ class _SearchBarState extends State<SearchBar> {
                     borderRadius: BorderRadius.circular(16.0),
                     borderSide:  BorderSide(
                       color: Colorsapp.lGray,
-                      width: 1,
+                      width:1,
                       style: BorderStyle.solid,
                     ),
                   ),
                   prefixIcon: Icon(
                     Icons.search,
-                    size: 30,
+                    size: 25,
                     color: widget.searchController.text.isEmpty
                         ? Color.fromRGBO(129, 129, 129, 1)
-                        : Color(0xff45B9EE),
+                        : Colorsapp.themeColor,
                   ),
-                  hintText: "     بحث...",
-                  hintStyle: Text_Style.getstyle(fontsize: 15, ColorText: Colors.black, fontWeight: FontWeight.w600)),
+                  hintText: "بحث...",
+                  hintStyle: Text_Style.getstyle(fontsize: 12, ColorText: Colors.black, fontWeight: FontWeight.w600)),
             ),
           ),
         ),

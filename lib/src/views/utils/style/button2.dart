@@ -18,8 +18,8 @@ class Button2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(bottom: 10 ,left: 30,right: 30),
-        width: 260,
-        height: 40,
+        width: 230,
+        height: 35,
         child:  RawMaterialButton(
           onPressed: () {
             onPressed();
@@ -32,7 +32,7 @@ class Button2 extends StatelessWidget {
             padding: const EdgeInsets.only(top: 0),
             child: Text(
                 text,
-                style: Text_Style.getstyle(fontsize: 20, ColorText: Colors.white, fontWeight:FontWeight.w700)
+                style: Text_Style.getstyle(fontsize: 18, ColorText: Colors.white, fontWeight:FontWeight.w700)
             ),
           ),
         ));

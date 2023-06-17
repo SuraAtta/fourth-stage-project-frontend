@@ -12,12 +12,12 @@ class ProfileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 25),
+      padding: const EdgeInsets.only(bottom: 20),
       child: TextButton(
         style: ButtonStyle(
           padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(10),
             side: BorderSide(width: 2, color: Colorsapp.lGray),
           )),
           backgroundColor: MaterialStateProperty.all(Colorsapp.lGray),
@@ -30,7 +30,7 @@ class ProfileButton extends StatelessWidget {
         },
         child: Container(
           width: double.infinity,
-          height: 60,
+          height: 50,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
@@ -55,7 +55,7 @@ class ProfileButton extends StatelessWidget {
                           fontWeight: FontWeight.w700),
                     ),
                     SizedBox(
-                      width: 20,
+                      width: 5,
                     ),
                   ],
                 ),

@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:loading_animations/loading_animations.dart';
+import '../../../logic/services/api/api_calls.dart';
+import '../../../logic/services/api/url.dart';
+import '../../../logic/services/local_database/shared_preferences.dart';
 import '../../utils/nav/main_nav.dart';
 import '../../utils/style/button1.dart';
 import '../../utils/style/colors.dart';
@@ -43,6 +47,10 @@ class _LandingState extends State<Landing> {
                       Container(
                         height: 300,
                         color: Colorsapp.themeColor,
+                        child: Center(
+                            child:
+                       Container( height:250,width:250,child: Image.network(Api.Domain +BackEnd.apicolorLogo[0].image.toString()))
+                        ),
                       )
                     ]
                   ),
@@ -58,8 +66,13 @@ class _LandingState extends State<Landing> {
                           children: [
                             Button1(
                               text: 'تسجيل دخول',
-                              onPressed: () {
+                              onPressed: () async {
                                 print("تسجيل الدخول");
+                                await BackEnd.Get3();
+                                // await BackEnd.get_colorLogo();
+                                await BackEnd.get_Categories();
+                                await BackEnd.makeCatigoryList();
+                                await Database2.initStorageFav();
                                 Get.offAll(SignInPage(),
                                     transition: Transition.noTransition,
                                     duration: Duration(seconds: 1));
@@ -67,26 +80,37 @@ class _LandingState extends State<Landing> {
                             ),
                             Button1(
                               text: 'انشاء حساب',
-                              onPressed: () {
+                              onPressed: () async {
                                 print("انشاء حساب");
+                                await BackEnd.Get3();
+                                // await BackEnd.get_colorLogo();
+                                await BackEnd.get_Categories();
+                                await BackEnd.makeCatigoryList();
+                                await Database2.initStorageFav();
                                 Get.offAll(SignUpPage(),
                                     transition: Transition.noTransition,
                                     duration: Duration(seconds: 1));
                               },
                             ),
-                            RichText(
+                            if(delay1.value == true)
+                              RichText(
                                 text: TextSpan(
                                   text: 'الدخول كزائر',
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
                                       delay1.value=false;
                                      // await BackEnd.get_Categories();
-                                     // await BackEnd.Get3();
+                                      print(BackEnd.Prodects3.length);
+                                      print('قبل الشسمة   ');
+                                      await BackEnd.Get3();
+                                     // await BackEnd.get_colorLogo();
+                                      await BackEnd.get_Categories();
+                                      await BackEnd.makeCatigoryList();
+                                      await Database2.initStorageFav();
                                       Future.delayed(const Duration(seconds: 3), () {
                                         Get.offAll(MainNav(selectedIndex: 0,),
                                             transition: Transition.noTransition,
                                             duration: Duration(seconds: 2));
-
                                       });
                                       Future.delayed(const Duration(seconds: 3), () {
                                         delay1.value = true;
@@ -95,7 +119,7 @@ class _LandingState extends State<Landing> {
                                     },
                                   style: GoogleFonts.cairo(
                                     textStyle: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         color: Colorsapp.themeColor,
                                         letterSpacing: 1),
                                   ),
@@ -105,7 +129,7 @@ class _LandingState extends State<Landing> {
                                       ? Padding(
                                     padding: const EdgeInsets.only(top: 20),
                                     child:LoadingFadingLine.circle(
-                                        size: 50,
+                                        size: 40,
                                         backgroundColor: Colorsapp.themeColor
                                     ),
                                   ):Container();

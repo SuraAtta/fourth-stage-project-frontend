@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'prodect_body.dart';
+import '../../../logic/services/api/api_calls.dart';
+import '../prodects/fav_cart.dart';
 
-class FavProdectsBar extends StatefulWidget {
+class FavProdectsBar extends StatelessWidget {
   const FavProdectsBar({Key? key}) : super(key: key);
-
-  @override
-  State<FavProdectsBar> createState() => _FavProdectsBarState();
-}
-
-class _FavProdectsBarState extends State<FavProdectsBar> {
+  static List favList = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,12 +13,9 @@ class _FavProdectsBarState extends State<FavProdectsBar> {
             crossAxisCount: 2,
             childAspectRatio:MediaQuery.of(context).size.width / 500,
           ),
-          itemCount: 7,
+          itemCount:FavProdectsBar.favList.length,
           itemBuilder: (BuildContext context, index) {
-            //if(BackEnd.favList[index].isFav == true){
-              return CartBody();
-          //}
-            //return SizedBox(height: 0,width: 0,);
+              return FavCart(index: index,);
           }
       ),
     );

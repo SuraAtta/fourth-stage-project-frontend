@@ -30,10 +30,10 @@ class Text_Field1 extends StatelessWidget {
 
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 5),
       child: SizedBox(
-        width: 280,
-        height: 50,
+        width: 250,
+        height: 40,
         child: TextFormField(
             textDirection: TextDirection.rtl,
             onChanged: (text) {
@@ -52,9 +52,9 @@ class Text_Field1 extends StatelessWidget {
                   borderSide: BorderSide(color: Colorsapp.themeColor, width: 2),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(18.0),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(
-                    width: 2,
+                    width: 1,
                     color: Colors.black26,
                   ),
                 ),
@@ -63,7 +63,7 @@ class Text_Field1 extends StatelessWidget {
                 hintText: " $hintText   ",
                 hintStyle:GoogleFonts.cairo(
                     textStyle:
-                    Text_Style.getstyle(fontsize: 16, ColorText: Colorsapp.dGray, fontWeight:FontWeight.w500)),
+                    Text_Style.getstyle(fontsize: 14, ColorText: Colorsapp.dGray, fontWeight:FontWeight.w500)),
                 contentPadding: const EdgeInsets.only(top: 10, right: 12)),
             onTap: () {}),
       ),
