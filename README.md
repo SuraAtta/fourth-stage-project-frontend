@@ -21,7 +21,9 @@ Light Mode ...
 
 Night Mode ...
 
-![image](https://github.com/SuraAtta/fourth-stage-project-frontend/assets/96949252/4096958d-f608-44b1-9587-c970d49ea69c)
+![image](https://github.com/SuraAtta/fourth-stage-project-frontend/assets/96949252/4096958d-f608-44b1-9587-c970d49ea69c) ![image](https://github.com/SuraAtta/fourth-stage-project-frontend/assets/96949252/63e689d2-4d12-4647-a59b-69629e3a4c1e) ![image](https://github.com/SuraAtta/fourth-stage-project-frontend/assets/96949252/4dca8510-db66-4f8e-9841-33125a234a43)
+
+
 
 
 
