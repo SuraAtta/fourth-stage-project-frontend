@@ -1,4 +1,7 @@
 Petty 
+In our daily lives, mobile applications are becoming increasingly vital. These applications help peoples to accomplish different tasks anywhere by having only a mobile phone connected to the Internet. Online store applications are very popular these days. They allow peoples to search a massive number of different products and buying proper goods without need to leave their houses.
+In this project we develop an open-source customizable online store application for Android phones that offers customers a user-friendly interface for browsing and purchasing products online. Features include product search, browsing, shopping cart management, with a light and dark mode. It also aims to provide an intuitive and efficient shopping experience, allowing customers to navigate easily and make purchases with just a few taps. Additionally, it provides a web application dashboard for the admin to control the application through adding, deleting, modifying items and have the ability of changing the applications logo and the themes color. 
+When developing mobile applications, developers need to decide, either to develop multiple native applications for different operating systems or develop one app that is cross-platform compatible. Many technologies for creating cross-platform applications have emerged over the years. One such technology is Flutter. In this project, we used Flutter because of what it provides of cross-platform development and allow our application to work on both Android and IOS OS’s.
 
 Light Mode ...
 
